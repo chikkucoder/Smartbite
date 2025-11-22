@@ -12,30 +12,17 @@ const port = process.env.PORT || 5000;
 // Database initialization flag
 let dbInitialized = false;
 
-//  Use CORS middleware
+//  Use CORS middleware with proper configuration
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    const allowedOrigins = [
-      'http://localhost:3000',
-      'https://smartbite-phi.vercel.app',
-      'https://smartbite-five.vercel.app',
-      'https://smartbite-eight.vercel.app'
-    ];
-    
-    // Allow any vercel.app domain
-    if (origin.endsWith('.vercel.app') || allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    
-    callback(new Error('Not allowed by CORS'));
-  },
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
+  origin: true, // Allow all origins
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range']
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 app.use(express.json());
 
