@@ -6,23 +6,30 @@ const mongoDB = async () => {
         await mongoose.connect(mongoURI);
         console.log('MongoDB connected successfully');
 
+        // Wait for connection to be ready
+        const db = mongoose.connection.db;
+        
+        if (!db) {
+            throw new Error('Database connection not established');
+        }
+
         // Fetch the food_items collection
-        const fetched_data = await mongoose.connection.db.collection("food_items").find({}).toArray();
+        const fetched_data = await db.collection("food_items").find({}).toArray();
         
         // Store data globally
         global.food_items = fetched_data;
-        console.log("Food items fetched:", global.food_items); 
+        console.log("Food items fetched:", fetched_data.length, "items"); 
 
         //food category
-        const foodCategory = await mongoose.connection.db.collection("foodCategory").find({}).toArray();
+        const foodCategory = await db.collection("foodCategory").find({}).toArray();
         
         //store data globally
         global.foodCategory = foodCategory;
-        console.log("Food items fetched:", global.foodCategory); 
+        console.log("Food categories fetched:", foodCategory.length, "categories"); 
 
     } catch (error) {
         console.error('MongoDB connection error:', error);
-        process.exit(1); // Exit process only on connection failure
+        throw error; // Don't exit process on Vercel, just throw error
     }
 };
 
