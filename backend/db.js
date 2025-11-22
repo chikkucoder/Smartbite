@@ -11,7 +11,7 @@ const mongoDB = async () => {
     }
 
     try {
-        const conn = await mongoose.connect(mongoURI, {
+        await mongoose.connect(mongoURI, {
             serverSelectionTimeoutMS: 5000,
             socketTimeoutMS: 45000,
         });
@@ -19,10 +19,9 @@ const mongoDB = async () => {
         isConnected = true;
         console.log('MongoDB connected successfully');
 
-        // Wait a bit for the connection to be fully ready
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
-        const db = mongoose.connection.db;
+        // Use mongoose.connection.getClient() for newer versions
+        const client = mongoose.connection.getClient();
+        const db = client.db('Royfood');
         
         if (!db) {
             console.error('Database instance not available');
