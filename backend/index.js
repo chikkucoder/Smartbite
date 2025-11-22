@@ -14,12 +14,24 @@ let dbInitialized = false;
 
 //  Use CORS middleware
 app.use(cors({
-  origin: [
-    "http://localhost:3000", 
-    "https://smartbite-phi.vercel.app", 
-    "https://smartbite-five.vercel.app",
-    "https://smartbite*.vercel.app"
-  ], 
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'https://smartbite-phi.vercel.app',
+      'https://smartbite-five.vercel.app',
+      'https://smartbite-eight.vercel.app'
+    ];
+    
+    // Allow any vercel.app domain
+    if (origin.endsWith('.vercel.app') || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    callback(new Error('Not allowed by CORS'));
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
