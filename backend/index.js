@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors"); 
 const dotenv = require("dotenv");
 
 // Load environment variables FIRST
@@ -12,17 +11,19 @@ const port = process.env.PORT || 5000;
 // Database initialization flag
 let dbInitialized = false;
 
-//  Use CORS middleware with proper configuration
-app.use(cors({
-  origin: true, // Allow all origins
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-  exposedHeaders: ['Content-Range', 'X-Content-Range']
-}));
-
-// Handle preflight requests
-app.options('*', cors());
+// Custom CORS middleware for Vercel
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  next();
+});
 
 app.use(express.json());
 
