@@ -9,10 +9,21 @@ const mongoDB = require("./db");
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Connect to MongoDB
-mongoDB().catch(err => {
-  console.error('Failed to connect to MongoDB:', err);
-});
+// Initialize database connection once
+let dbInitialized = false;
+const initDB = async () => {
+  if (!dbInitialized) {
+    try {
+      await mongoDB();
+      dbInitialized = true;
+    } catch (err) {
+      console.error('Failed to connect to MongoDB:', err);
+    }
+  }
+};
+
+// Initialize DB immediately
+initDB();
 
 //  Use CORS middleware
 app.use(cors({
@@ -24,6 +35,14 @@ app.use(cors({
 
 app.use(express.json());
 
+// Middleware to ensure DB is ready
+app.use(async (req, res, next) => {
+  if (!dbInitialized) {
+    await initDB();
+  }
+  next();
+});
+
 //  Import Routes
 app.use("/api", require("./Routes/CreatUser"));
 app.use("/api", require("./Routes/DisplayData"));
@@ -32,7 +51,11 @@ app.use("/api/payment", require("./Routes/paymentRoutes"));
 app.use("/api", require("./Routes/chatbot"));
 
 app.get("/", (req, res) => {
-  res.send("SmartBite API - Server is running");
+  res.json({ 
+    message: "SmartBite API - Server is running",
+    status: "healthy",
+    dbConnected: dbInitialized
+  });
 });
 
 // Only start server if not in Vercel environment
