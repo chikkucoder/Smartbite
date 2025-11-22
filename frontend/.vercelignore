@@ -1,0 +1,16 @@
+# Backend files (not needed for frontend deployment)
+../backend/
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
