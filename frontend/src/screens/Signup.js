@@ -8,9 +8,10 @@ export default function Signup() {
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        setLoading(true)
-        const response = await fetch("http://localhost:5000/api/creatuser", {
+        e.preventDefault();
+        setLoading(true);
+        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+        const response = await fetch(`${API_URL}/api/creatuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

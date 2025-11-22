@@ -53,7 +53,8 @@ export default function Cart() {
       return;
     }
 
-    let response = await fetch("http://localhost:5000/api/orderData", {
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    let response = await fetch(`${API_URL}/api/orderData`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
