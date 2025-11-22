@@ -14,7 +14,12 @@ let dbInitialized = false;
 
 //  Use CORS middleware
 app.use(cors({
-  origin: ["http://localhost:3000", "https://smartbite-phi.vercel.app", "https://smartbite*.vercel.app"], 
+  origin: [
+    "http://localhost:3000", 
+    "https://smartbite-phi.vercel.app", 
+    "https://smartbite-five.vercel.app",
+    "https://smartbite*.vercel.app"
+  ], 
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
