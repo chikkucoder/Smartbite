@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb+srv://roybabu1452:6202ANKIT@cluster0.k5nuf.mongodb.net/Royfood?retryWrites=true&w=majority';
+const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://roybabu1452:6202ANKIT@cluster0.k5nuf.mongodb.net/Royfood?retryWrites=true&w=majority';
 
 const mongoDB = async () => {
     try {
-        await mongoose.connect(mongoURI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect(mongoURI);
         console.log('MongoDB connected successfully');
 
         // Fetch the food_items collection

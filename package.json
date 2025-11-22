@@ -1,0 +1,14 @@
+{
+  "name": "smartbite",
+  "version": "1.0.0",
+  "description": "SmartBite Food Delivery Application",
+  "scripts": {
+    "install-frontend": "cd frontend && npm install",
+    "install-backend": "cd backend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && node index.js"
+  },
+  "keywords": ["food", "delivery", "mern", "react", "nodejs"],
+  "author": "SmartBite Team",
+  "license": "MIT"
+}
