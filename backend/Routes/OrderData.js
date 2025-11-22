@@ -3,7 +3,7 @@ const router = express.Router();
 const Order = require('../models/Order');
 
 router.post('/orderData', async (req, res) => {
-    console.log("🔹 Received request at /orderData");  
+    console.log(" Received request at /orderData");  
     console.log("Received email:", req.body.email);
 
     if (!req.body.email) {
@@ -16,7 +16,7 @@ router.post('/orderData', async (req, res) => {
         return res.status(400).json({ error: "Invalid order data format." });
     }
 
-    // ✅ Add Order_date only ONCE to the beginning of the array
+    //  Add Order_date only ONCE to the beginning of the array
     data.unshift({ Order_date: new Date() });
 
     try {
@@ -36,7 +36,7 @@ router.post('/orderData', async (req, res) => {
 
         return res.json({ success: true });
     } catch (error) {
-        console.error("🔹 ERROR:", error.message);
+        console.error(" ERROR:", error.message);
         return res.status(500).send("Server Error");
     }
 });
@@ -55,7 +55,7 @@ router.post('/myOrderData', async (req, res) => {
 
         res.json({ orderData: myData.order_data });
     } catch (error) {
-        console.error("🔹 Server Error:", error.message);
+        console.error("Server Error:", error.message);
         res.status(500).json({ error: "Server Error: " + error.message });
     }
 });

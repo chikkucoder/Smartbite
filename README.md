@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# 🍔 SmartBite - Food Delivery Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, full-stack MERN (MongoDB, Express, React, Node.js) food delivery application with beautiful UI/UX and responsive design.
 
-## Available Scripts
+## 📁 Project Structure
 
-In the project directory, you can run:
+```
+mernapp/
+├── frontend/          # React frontend application
+│   ├── src/          # React components and screens
+│   ├── public/       # Static files
+│   └── package.json  # Frontend dependencies
+│
+├── backend/          # Node.js/Express backend
+│   ├── Routes/       # API routes
+│   ├── models/       # MongoDB models
+│   ├── db.js         # Database configuration
+│   ├── index.js      # Server entry point
+│   └── package.json  # Backend dependencies
+│
+└── README.md         # This file
+```
 
-### `npm start`
+## 🚀 Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v14 or higher)
+- MongoDB Atlas account
+- npm or yarn
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd mernapp
+   ```
 
-### `npm run build`
+2. **Setup Backend**
+   ```bash
+   cd backend
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Setup Frontend**
+   ```bash
+   cd frontend
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Running the Application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Start Backend Server**
+   ```bash
+   cd backend
+   node index.js
+   ```
+   Backend will run on: `http://localhost:5000`
 
-### `npm run eject`
+2. **Start Frontend (in a new terminal)**
+   ```bash
+   cd frontend
+   npm start
+   ```
+   Frontend will run on: `http://localhost:3000`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ✨ Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 🔐 User Authentication (Login/Signup)
+- 🍕 Browse Food Items by Categories
+- 🔍 Search Functionality
+- 🛒 Shopping Cart
+- 💳 Payment Integration (Razorpay)
+- 📦 Order History
+- 📱 Fully Responsive Design
+- 🎨 Modern UI/UX with Animations
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🛠️ Technologies Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Frontend
+- React.js
+- React Router
+- Bootstrap 5
+- Material-UI Icons
+- CSS3 with modern animations
 
-## Learn More
+### Backend
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- JWT Authentication
+- Razorpay Payment Gateway
+- Google Generative AI (Chatbot)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📝 Environment Variables
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create a `.env` file in the `backend` folder:
 
-### Code Splitting
+```env
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🤝 Contributing
 
-### Analyzing the Bundle Size
+Contributions are welcome! Feel free to open issues and pull requests.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📄 License
 
-### Making a Progressive Web App
+This project is open source and available under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 👨‍💻 Author
 
-### Advanced Configuration
+Created with ❤️ by SmartBite Team
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Happy Coding! 🎉**

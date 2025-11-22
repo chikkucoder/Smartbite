@@ -8,7 +8,7 @@ console.log("RAZORPAY_KEY_ID:", process.env.RAZORPAY_KEY_ID);
 console.log("RAZORPAY_KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET);
 
 if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
-  console.error("❌ Razorpay API keys are missing! Check your .env file.");
+  console.error(" Razorpay API keys are missing! Check your .env file.");
   process.exit(1); // Stop execution if keys are missing
 }
 

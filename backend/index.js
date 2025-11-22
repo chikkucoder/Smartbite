@@ -12,7 +12,7 @@ mongoDB();
 
 //  Use CORS middleware
 app.use(cors({
-  origin: "http://localhost:3000", // Allow frontend access
+  origin: "http://localhost:3000", // Allow frontend access from frontend folder
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
@@ -25,7 +25,7 @@ app.use("/api", require("./Routes/CreatUser"));
 app.use("/api", require("./Routes/DisplayData"));
 app.use("/api", require("./Routes/OrderData"));
 app.use("/api/payment", require("./Routes/paymentRoutes")); // Razorpay Payment Route
-app.use("/api", require("./Routes/chatbot"));  // ✅ Chatbot route added
+app.use("/api", require("./Routes/chatbot"));  // Chatbot route added
 
 app.get("/", (req, res) => {
   res.send("Hello World");

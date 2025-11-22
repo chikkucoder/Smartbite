@@ -12,7 +12,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 import Signup from './screens/Signup.js';
 import { CartProvider } from './components/ContextReducer';
 import MyOrder from './screens/MyOrder.js';
-import Chatbot from './components/Chatbot'; // 👉 Import your chatbot
+import Chatbot from './components/Chatbot'; //  Import your chatbot
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/myOrder" element={<MyOrder />} />
           </Routes>
 
-          {/* 👉 Add chatbot outside of Routes to make it global */}
+          {/*  Add chatbot outside of Routes to make it global */}
           <Chatbot />
         </div>
       </Router>
