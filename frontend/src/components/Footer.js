@@ -108,10 +108,10 @@ export default function Footer() {
               <h3 className="footer-brand">🍔 SmartBite</h3>
               <p>Delicious food delivered to your doorstep. Fast, fresh, and always satisfying.</p>
               <div className="social-links">
-                <a href="#" className="social-link" aria-label="Facebook">👍</a>
-                <a href="#" className="social-link" aria-label="Twitter">🐦</a>
-                <a href="#" className="social-link" aria-label="Instagram">📷</a>
-                <a href="#" className="social-link" aria-label="LinkedIn">💼</a>
+                <a href="https://facebook.com" className="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">👍</a>
+                <a href="https://twitter.com" className="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">🐦</a>
+                <a href="https://instagram.com" className="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
+                <a href="https://linkedin.com" className="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">💼</a>
               </div>
             </div>
             
@@ -120,18 +120,18 @@ export default function Footer() {
               <ul className="footer-links">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/myOrder">My Orders</Link></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><Link to="/">About Us</Link></li>
+                <li><Link to="/">Contact</Link></li>
               </ul>
             </div>
             
             <div className="footer-section">
               <h3>Support</h3>
               <ul className="footer-links">
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">FAQs</a></li>
+                <li><Link to="/">Help Center</Link></li>
+                <li><Link to="/">Terms of Service</Link></li>
+                <li><Link to="/">Privacy Policy</Link></li>
+                <li><Link to="/">FAQs</Link></li>
               </ul>
             </div>
             
