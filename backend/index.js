@@ -9,21 +9,8 @@ const mongoDB = require("./db");
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Initialize database connection once
+// Database initialization flag
 let dbInitialized = false;
-const initDB = async () => {
-  if (!dbInitialized) {
-    try {
-      await mongoDB();
-      dbInitialized = true;
-    } catch (err) {
-      console.error('Failed to connect to MongoDB:', err);
-    }
-  }
-};
-
-// Initialize DB immediately
-initDB();
 
 //  Use CORS middleware
 app.use(cors({
@@ -35,10 +22,16 @@ app.use(cors({
 
 app.use(express.json());
 
-// Middleware to ensure DB is ready
+// Middleware to ensure DB is initialized
 app.use(async (req, res, next) => {
   if (!dbInitialized) {
-    await initDB();
+    try {
+      await mongoDB();
+      dbInitialized = true;
+      console.log('Database initialized successfully');
+    } catch (err) {
+      console.error('Database initialization failed:', err);
+    }
   }
   next();
 });
