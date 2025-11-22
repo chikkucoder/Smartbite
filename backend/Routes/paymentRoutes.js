@@ -3,23 +3,31 @@ const Razorpay = require("razorpay");
 const express = require("express");
 const router = express.Router();
 
-// ✅ Correct Debugging Log
-console.log("RAZORPAY_KEY_ID:", process.env.RAZORPAY_KEY_ID);
-console.log("RAZORPAY_KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET);
+// Check if Razorpay keys are available
+const hasRazorpayKeys = process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET;
 
-if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
-  console.error(" Razorpay API keys are missing! Check your .env file.");
-  process.exit(1); // Stop execution if keys are missing
+let razorpay = null;
+
+if (hasRazorpayKeys) {
+  // Initialize Razorpay only if keys are available
+  razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+  });
+  console.log("✅ Razorpay initialized successfully");
+} else {
+  console.warn("⚠️ Razorpay keys not found. Payment functionality will be disabled.");
 }
 
-// ✅ Initialize Razorpay
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,      // ✅ Corrected
-  key_secret: process.env.RAZORPAY_KEY_SECRET,  // ✅ Corrected
-});
-
-// ✅ Create Order Route
+// Create Order Route
 router.post("/create-order", async (req, res) => {
+  if (!razorpay) {
+    return res.status(503).json({ 
+      error: "Payment service not configured",
+      message: "Razorpay API keys are not set" 
+    });
+  }
+
   try {
     const { amount, currency } = req.body;
     const options = {
