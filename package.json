@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "SmartBite Food Delivery Application",
   "scripts": {
-    "vercel-build": "npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend"
+    "vercel-build": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": ["food", "delivery", "mern", "react", "nodejs"],
   "author": "SmartBite Team",
