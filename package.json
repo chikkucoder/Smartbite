@@ -3,9 +3,21 @@
   "version": "1.0.0",
   "description": "SmartBite Food Delivery Application",
   "scripts": {
-    "vercel-build": "npm install --prefix frontend && npm run build --prefix frontend"
+    "vercel-build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": ["food", "delivery", "mern", "react", "nodejs"],
   "author": "SmartBite Team",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "dotenv": "^16.5.0",
+    "mongoose": "^8.9.7",
+    "cors": "^2.8.5",
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "express-validator": "^7.2.1",
+    "body-parser": "^2.2.0",
+    "razorpay": "^2.9.6",
+    "@google/generative-ai": "^0.24.0"
+  }
 }
